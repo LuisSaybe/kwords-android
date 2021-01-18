@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="language_spinner_items">
+        <item>English</item>
+        <item>日本語</item>
+        <item>Français</item>
+        <item>Español</item>
+        <item>Arabic</item>
+        <item>монгол хэл</item>
+        <item>Tiếng Việt</item>
+        <item>ภาษาไทย</item>
+        <item>Bahasa Indonesia</item>
+        <item>русский язык</item>
+    </string-array>
+</resources>

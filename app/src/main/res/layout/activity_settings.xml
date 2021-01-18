@@ -1,153 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Settings"
-    android:padding="20dp"
-    >
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_height="30dp"
-        android:layout_width="19dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/back"
-        android:onClick="onBackClick"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewmodel" type="com.luissaybe.kwords.SettingsViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".Settings">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
-            android:id="@+id/beginner_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="top">
+                <Button
+                    android:id="@+id/settingsButton"
+                    android:layout_height="30dp"
+                    android:layout_width="19dp"
+                    android:background="@drawable/back"
+                    android:onClick="onBackClick"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/show_beginner_words_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Show beginner words"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
+                <RelativeLayout
+                    android:id="@+id/beginner_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@+id/settingsButton"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="top">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/show_beginner_words_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/intermediate_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/beginner_settings"
-            android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/show_beginner_words_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Show beginner words"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/show_intermediate_words_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="center_vertical"
-                android:text="Show intermediate words"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/show_beginner_words_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/intermediate_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/beginner_settings"
+                    android:layout_marginTop="10dp">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/show_intermediate_words_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/advanced_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/intermediate_settings"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/show_advanced_words_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Show advanced words"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/show_advanced_words_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/listen_to_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/advanced_settings"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/listen_to_word_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Listen to word on transition"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/listen_to_word_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/show_definition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/listen_to_word"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/show_definition_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Always show definition"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/show_definition_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/shuffle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/show_definition"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:id="@+id/shuffle_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Shuffle"
-                android:layout_centerInParent="true"
-                android:textSize="18sp" />
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/shuffle_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-    </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/show_intermediate_words_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center_vertical"
+                        android:text="Show intermediate words"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/show_intermediate_words_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/advanced_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/intermediate_settings"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/show_advanced_words_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Show advanced words"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/show_advanced_words_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/listen_to_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/advanced_settings"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/listen_to_word_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Listen to word on transition"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/listen_to_word_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/show_definition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/listen_to_word"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/show_definition_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Always show definition"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/show_definition_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/shuffle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/show_definition"
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/shuffle_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:text="Shuffle"
+                        android:layout_centerInParent="true"
+                        android:textSize="18sp" />
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/shuffle_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/play_speed_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Play speed"
+                    android:layout_below="@+id/shuffle"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp" />
+                <Spinner
+                    android:id="@+id/play_speed_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/play_speed_label"
+                    android:layout_marginTop="10dp"
+                    android:entries="@array/speed_spinner_items"
+                    android:selectedItemPosition="@={viewmodel.playSpeedSpinnerPosition}" />
+                <TextView
+                    android:id="@+id/language_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Language"
+                    android:layout_below="@+id/play_speed_spinner"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp" />
+                <Spinner
+                    android:id="@+id/language_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/language_label"
+                    android:layout_marginTop="10dp"
+                    android:entries="@array/language_spinner_items" />
+            </RelativeLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
