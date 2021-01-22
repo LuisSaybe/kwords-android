@@ -7,27 +7,35 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.observe
 import com.luissaybe.kwords.databinding.ActivitySettingsBinding
 
 class Settings : AppCompatActivity() {
-    val settingsModel: SettingsViewModel by viewModels()
+    private val settingsModel: SettingsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate(state: Bundle?) {
+        super.onCreate(state)
         setContentView(R.layout.activity_settings)
-
         val binding: ActivitySettingsBinding = DataBindingUtil.setContentView(this, R.layout.activity_settings)
         binding.lifecycleOwner = this
         binding.viewmodel = settingsModel
 
-        settingsModel.playSpeedSpinnerPosition.observe(this, { value ->
-            Log.d("Settings", value.toString() + " = position")
-        })
+        Log.d(Settings::class.simpleName, "savedInstanceState = " + state.toString())
 
-        // var spinner = this.findViewById<Spinner>(R.id.play_speed_spinner)
+        state?.let {
+            val playSpeedSpinnerPosition = it.getInt("playSpeedSpinnerPosition")
+            Log.d(Settings::class.simpleName, "recover => playSpeedSpinnerPosition" + playSpeedSpinnerPosition.toString())
+        }
+    }
 
-        Log.d("Settings", settingsModel.playSpeedSpinnerPosition.value.toString() + " = position")
+    override fun onSaveInstanceState(state: Bundle) {
+        state.putInt("playSpeedSpinnerPosition", settingsModel.playSpeedSpinnerPosition.value!!);
+        super.onSaveInstanceState(state)
+        Log.d(Settings::class.simpleName, "onSaveInstanceState")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        overridePendingTransition(0, 0)
     }
 
     fun onBackClick(view: View) {

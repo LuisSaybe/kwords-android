@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onSettingsClick(view: View) {
         val intent = Intent(this, Settings::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
         startActivity(intent)
     }
 }
