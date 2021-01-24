@@ -3,6 +3,6 @@ package com.luissaybe.kwords
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.MutableLiveData
 
-class SettingsViewModel : ViewModel() {
-    val playSpeedSpinnerPosition = MutableLiveData(0)
+class MainActivityModel() : ViewModel() {
+    val playPauseButtonId = MutableLiveData<Int>(R.drawable.play)
 }
